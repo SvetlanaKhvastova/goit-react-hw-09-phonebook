@@ -1,0 +1,18 @@
+a,
+.navLink {
+  /* display: flex; */
+  color: white;
+  text-decoration: none;
+  margin-right: 25px;
+  font-size: 40px;
+}
+
+.navLink:hover {
+  color: rgb(71, 114, 255);
+}
+
+a,
+.navLink.active {
+  color: rgb(71, 114, 255);
+  font-weight: 700;
+}

@@ -1,0 +1,43 @@
+[
+   {
+    "id": "1",
+    "component": "./pages/Home/Home",
+    "name": "Home",
+    "path": "/home",
+    "exact": true,
+    "restricted": false,
+    "privated": false
+    
+  },
+    {
+    "id": "2",
+    "component": "./pages/ContactsPage/ContactsPage",
+    "name": "ContactsPage",
+    "path": "/contacts",
+    "exact": true,
+    "restricted": false,
+    "privated": true
+    
+    
+  },
+ 
+  {
+    "id": "3",
+    "component": "./pages/RegisterPage/RegisterPage",
+    "name": "RegisterPage",
+    "path": "/signup",
+    "exact": true,
+    "restricted": true, 
+    "privated": false
+  },
+   {
+    "id": "4",
+    "component": "./pages/LoginPage/LoginPage",
+    "name": "LoginPage",
+    "path": "/login",
+    "exact": true,
+    "restricted": true,
+    "privated": false
+    
+  }
+]

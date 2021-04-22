@@ -1,0 +1,15 @@
+.span {
+  margin: 0;
+  padding: 0;
+  color: white;
+  margin-right: 25px;
+}
+
+img {
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.userMenu {
+  display: flex;
+  align-items: center;
+}
