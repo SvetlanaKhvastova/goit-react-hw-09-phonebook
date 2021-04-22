@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import s from "./ContactForm.module.css";
@@ -15,31 +15,34 @@ export default function ContactForm() {
     contactsSelectors.getAllcontacts({ name, number })
   );
 
-  const handleInputChange = (e) => {
+  const handleInputChange = useCallback((e) => {
     const { name, value } = e.currentTarget;
     console.log(name, value);
 
     name === "name" ? setName(value) : setNumber(value);
-  };
+  }, []);
 
-  const handleSubmiteForm = (e) => {
-    e.preventDefault();
+  const handleSubmiteForm = useCallback(
+    (e) => {
+      e.preventDefault();
 
-    reset();
+      reset();
 
-    if (
-      contactsForm.find((el) => el.name.toLowerCase() === name.toLowerCase())
-    ) {
-      return alert(`${name} is already in contacts`);
-    }
+      if (
+        contactsForm.find((el) => el.name.toLowerCase() === name.toLowerCase())
+      ) {
+        return alert(`${name} is already in contacts`);
+      }
 
-    if (contactsForm.find((el) => el.number.toLowerCase() === number)) {
-      return alert(`${number} is already in contacts`);
-    }
-    const newContact = { name, number };
+      if (contactsForm.find((el) => el.number.toLowerCase() === number)) {
+        return alert(`${number} is already in contacts`);
+      }
+      const newContact = { name, number };
 
-    dispatch(contactsOperations.addContacts(newContact));
-  };
+      dispatch(contactsOperations.addContacts(newContact));
+    },
+    [contactsForm, dispatch, name, number]
+  );
 
   const reset = () => {
     setName("");

@@ -1,18 +1,21 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import s from "./Filter.module.css";
 import ProtoTypes from "prop-types";
 import { contactsActions, contactsSelectors } from "../../redux/todos";
 
 export default function Filter() {
-  const filterSearch = useSelector(contactsSelectors.getFilterContacts);
   const dispatch = useDispatch();
+  const filterSearch = useSelector(contactsSelectors.getFilterContacts);
 
-  const handlerFilterSearch = (e) => {
-    const { value } = e.currentTarget;
+  const handlerFilterSearch = useCallback(
+    (e) => {
+      const { value } = e.currentTarget;
 
-    dispatch(contactsActions.filterContacts(value));
-  };
+      dispatch(contactsActions.filterContacts(value));
+    },
+    [dispatch]
+  );
 
   return (
     <div className={s.filterBox}>

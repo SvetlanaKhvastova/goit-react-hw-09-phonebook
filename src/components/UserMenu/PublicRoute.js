@@ -4,13 +4,13 @@ import { useSelector } from "react-redux";
 import { authSelectors } from "../../redux/auth";
 
 export default function PublicRoute({ component: Component, ...routeProps }) {
-  const isAuthenticated = useSelector(authSelectors.getIsAuthenticated);
+  const isLoggedIn = useSelector(authSelectors.getIsAuthenticated);
 
   return (
     <Route
       {...routeProps}
       render={(props) =>
-        isAuthenticated && routeProps.restricted ? (
+        isLoggedIn && routeProps.restricted ? (
           <Redirect to="/contacts" />
         ) : (
           <Component {...props} />

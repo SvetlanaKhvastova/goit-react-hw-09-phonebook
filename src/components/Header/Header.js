@@ -7,7 +7,7 @@ import { authSelectors } from "../../redux/auth";
 import s from "./Header.module.css";
 
 export default function Header() {
-  const isAuthenticated = useSelector(authSelectors.getIsAuthenticated);
+  const isLoggedIn = useSelector(authSelectors.getIsAuthenticated);
 
   return (
     <>
@@ -25,7 +25,7 @@ export default function Header() {
               >
                 Home
               </NavLink>
-              {isAuthenticated ? (
+              {isLoggedIn ? (
                 <>
                   <NavLink
                     exact

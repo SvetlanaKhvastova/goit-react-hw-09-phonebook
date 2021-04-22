@@ -38,6 +38,7 @@ export default function Contacts() {
     </ul>
   );
 }
+
 Contacts.protoTypes = {
   onClick: PropTypes.func.isRequired,
 };
