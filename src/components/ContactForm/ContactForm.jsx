@@ -11,9 +11,7 @@ export default function ContactForm() {
   const [number, setNumber] = useState("");
 
   const dispatch = useDispatch();
-  const contactsForm = useSelector(
-    contactsSelectors.getAllcontacts({ name, number })
-  );
+  const contactsForm = useSelector(contactsSelectors.getAllcontacts);
 
   const handleInputChange = useCallback((e) => {
     const { name, value } = e.currentTarget;
@@ -22,27 +20,24 @@ export default function ContactForm() {
     name === "name" ? setName(value) : setNumber(value);
   }, []);
 
-  const handleSubmiteForm = useCallback(
-    (e) => {
-      e.preventDefault();
+  const handleSubmiteForm = (e) => {
+    e.preventDefault();
 
-      reset();
+    reset();
 
-      if (
-        contactsForm.find((el) => el.name.toLowerCase() === name.toLowerCase())
-      ) {
-        return alert(`${name} is already in contacts`);
-      }
+    if (
+      contactsForm.find((el) => el.name.toLowerCase() === name.toLowerCase())
+    ) {
+      return alert(`${name} is already in contacts`);
+    }
 
-      if (contactsForm.find((el) => el.number.toLowerCase() === number)) {
-        return alert(`${number} is already in contacts`);
-      }
-      const newContact = { name, number };
+    if (contactsForm.find((el) => el.number.toLowerCase() === number)) {
+      return alert(`${number} is already in contacts`);
+    }
+    const newContact = { name, number };
 
-      dispatch(contactsOperations.addContacts(newContact));
-    },
-    [contactsForm, dispatch, name, number]
-  );
+    dispatch(contactsOperations.addContacts(newContact));
+  };
 
   const reset = () => {
     setName("");
